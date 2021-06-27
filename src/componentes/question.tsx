@@ -1,22 +1,32 @@
 import {ReactNode} from 'react'
+import classnames from 'classnames'
 import '../estilos/question.scss'
 
 type QuestionProps = {
-  content: string;  //conteúdo da pergunta
-  author: {         //a pessoa logada
+  content: string;  
+  author: {         
     name: string;   
     avatar: string;
   };
-  children? : ReactNode; //todo componenete pode ter um nó children
+  children? : ReactNode; 
+  isAnswered?: boolean;
+  isHighlighted?: boolean;
 }
 
 export function Question({
   content,
   author,
-  children
+  children,
+  isAnswered = false,
+  isHighlighted = false,
+
 }: QuestionProps){
   return(
-    <div className="question">
+    <div className={classnames('question',
+      {answered: isAnswered},
+      {highlighted: isHighlighted && !isAnswered },
+      )}
+      >
       <p>{content}</p>
       <footer>
         <div className="user-info">

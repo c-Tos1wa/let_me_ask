@@ -1,5 +1,5 @@
 import { createContext, ReactNode, useEffect, useState } from "react";
-import { ProgressPlugin } from "webpack";
+
 import { auth, firebase } from "../services/firebase";
 
 type User = {

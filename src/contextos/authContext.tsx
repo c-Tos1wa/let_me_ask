@@ -1,5 +1,4 @@
 import { createContext, ReactNode, useEffect, useState } from "react";
-
 import { auth, firebase } from "../services/firebase";
 
 type User = {
@@ -47,7 +46,7 @@ export function AuthContextProvider(props: AuthContextProviderProps) {
     const result = await auth.signInWithPopup(provider)
 
     if (result.user) {
-      const { displayName, photoURL, uid} = result.user
+      const { displayName, photoURL, uid } = result.user
 
       if (!displayName || !photoURL) {
         throw new Error('Missing information.');
@@ -66,4 +65,4 @@ export function AuthContextProvider(props: AuthContextProviderProps) {
       {props.children}
     </AuthContext.Provider>
   );
-  }
+}

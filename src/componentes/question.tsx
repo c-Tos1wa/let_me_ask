@@ -1,5 +1,5 @@
-import '../estilos/question.scss'
 import {ReactNode} from 'react'
+import '../estilos/question.scss'
 
 type QuestionProps = {
   content: string;  //conteúdo da pergunta
@@ -7,7 +7,7 @@ type QuestionProps = {
     name: string;   
     avatar: string;
   };
-  children? : ReactNode;
+  children? : ReactNode; //todo componenete pode ter um nó children
 }
 
 export function Question({

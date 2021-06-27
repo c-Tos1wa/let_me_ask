@@ -11,12 +11,15 @@ import {useAuth} from '../hooks/useAuth'
 import '../estilos/auth.scss'
 import { database } from '../services/firebase'
 
-
+//mostra a pagina inicial do aplicativo
+//useHistory -> contém todo o histórico que o usuário fez.
 export function Home(){
   const history = useHistory();
   const { user, signInWithGoogle } = useAuth()
   const [roomCode, setRoomCode] = useState('')
 
+  //espera o usuario fazer sign in com o Google e então,
+  // cria uma nova sala
   async function criarSala(){
     if(!user) {
       await signInWithGoogle()
@@ -24,6 +27,9 @@ export function Home(){
     history.push('/rooms/new');
   }
 
+  //Entrar na sala pelo código de sala -> se existir, entra na sala pelo código.
+  //Se não existir, produz um alerta de sala inexistente
+  //se não for passado nenhum código, retorna pra esperar o sign in
   async function entrarNaSala (event: FormEvent) {
       event.preventDefault();
 
